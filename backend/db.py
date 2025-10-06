@@ -7,11 +7,7 @@ db = SQLAlchemy()
 
 
 def init_db(app):
-    # """Initialize SQLAlchemy with the provided Flask app and create tables.
-
-    # This function should be called once from the application's entrypoint
-    # after `app = Flask(__name__)` is created.
-    # """
+  
     
     db_uri = 'mysql+pymysql://root:password@localhost/react_db'
     app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
@@ -35,11 +31,7 @@ class Document(db.Model):
 
 
 def fetch_all_documents(app=None):
-    # """Return all documents as a list of dicts.
-
-    # If `app` is provided, this will push an app context; otherwise it
-    # assumes there is an active Flask app context.
-    # """
+   
     if app is not None:
         with app.app_context():
             rows = Document.query.order_by(Document.id.desc()).all()
