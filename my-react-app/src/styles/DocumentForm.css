@@ -1,0 +1,5 @@
+/* Minimal styles for DocumentForm */
+form { max-width: 800px; margin: 16px auto; }
+label { font-weight: 600; }
+input, textarea { width: 100%; box-sizing: border-box; margin-bottom: 8px; }
+button { margin-right: 8px; }
