@@ -1,9 +1,9 @@
 from flask import Flask, request, jsonify
 from db import init_db, fetch_all_documents, save_documents
-from pdf import generate_pdf as _generate_pdf
+from pdf import generate_pdf
 from flask_cors import CORS
 app = Flask(__name__)
-CORS(app, origins="http://localhost:3000")
+CORS(app, origins="http://localhost:5173")
 
 
 init_db(app)
@@ -40,7 +40,7 @@ def get_docs():
 @app.route('/generate_pdf', methods=['POST'])
 def generate_pdf_route():
     
-    return _generate_pdf()
+    return generate_pdf()
     
 
 if __name__ == '__main__':

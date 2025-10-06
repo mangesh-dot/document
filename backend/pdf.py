@@ -21,7 +21,7 @@ def generate_pdf():
         for line in content.split('\n'):
             p.drawString(120, y, line)
             y -= 15
-        y -= 20  # space between documents
+        y -= 20  
 
     p.showPage()
     p.save()
