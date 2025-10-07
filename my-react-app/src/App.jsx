@@ -5,7 +5,8 @@ import './App.css';
 
 import DocumentList from "./Component/DocumentList";
 import CreateDocument from "./Component/CreateDocument";
-import DocumentsPage from "./Component/DocumentPage";
+// import DocumentsPage from "./Component/DocumentPage";
+import Home from "./Component/Home";
 
 function App() {
   const [documents, setDocuments] = useState([]);
@@ -15,7 +16,7 @@ async function fetchDocs() {
     const res = await fetch('http://127.0.0.1:5000/api/doc');
     const data = await res.json();
     
-    setDocuments(Array.isArray(data) ? data : []);
+    setDocuments(data);
   } catch (err) {
     console.error('Failed to fetch docs:', err);
   }
@@ -51,30 +52,20 @@ function handleSelect(doc) {
       <nav>
         <Link to="/">Home</Link> |{" "}
         <Link to="/create">Create Document</Link> |{" "}
-        <Link to="/documents">Documents Page</Link> |{" "}
-        <button onClick={fetchDocs} >Refresh</button>
+        <Link to="/list">Documents Page</Link> |{" "}
+        <button onClick={fetchDocs} >+</button>
       </nav>
 
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <>
-              <h2>Documents</h2>
-              <DocumentList documents={documents} />
-            </>
-          }
-        />
 
-        <Route path="/create" element={<CreateDocument onCreate={handleAdd} />} />
-
-        {/* Use a unique path for each page */}
-        <Route
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route
           path="/list"
           element={<DocumentList documents={documents} onSelect={handleSelect} />}
         />
-        <Route path="/documents" element={<DocumentsPage />} />
-      </Routes>
+      <Route path="/create" element={<CreateDocument onAdd={handleAdd}/>} />
+      {/* <Route path="/documents" element={<DocumentPage />} /> */}
+    </Routes>
     </BrowserRouter>
   );
 }

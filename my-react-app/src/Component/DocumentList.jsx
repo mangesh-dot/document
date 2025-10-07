@@ -1,4 +1,5 @@
 import React from "react";
+import "../styles/DocumentList.css";
 
  
 
@@ -7,62 +8,38 @@ function DocumentList({ documents = [], onSelect }) {
     return <div>No documents yet.</div>;
   }
 
-    const handleDownload = async () => {
-    try {
-      const res = await fetch("http://localhost:5000/generate_pdf", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ entries: documents }),
-      });
-
-      const blob = await res.blob();
-      const url = URL.createObjectURL(blob);
-
-      const link = document.createElement("a");
-      link.href = url;
-      link.download = "documents.pdf";
-      link.click();
-    } catch (err) {
-      console.error(err);
-      alert("Failed to download PDF");
-    }
-  };
 
 
   return (
-    <div>
-     
+    <div className="document-list">
       <ul>
-        {documents.map(doc => (
+        {documents.map((doc) => (
           <li key={doc.id}>
             {doc.entries && doc.entries.length > 0 ? (
               <div>
                 {doc.entries.map((e, i) => (
-                  <div key={i}>
+                  <div key={i} className="document-entry">
                     <strong>{e.title}</strong>
                     <div>{e.content}</div>
                   </div>
                 ))}
               </div>
             ) : (
-              <div>
+              <div className="document-entry">
                 <strong>{doc.title}</strong>
                 <div>{doc.content}</div>
               </div>
             )}
-            <div>
-              <button onClick={()=>onSelect && onSelect(doc)}>Review</button>
-              
+            <div className="document-buttons">
+              <button onClick={() => onSelect && onSelect(doc)}>Review</button>
             </div>
           </li>
         ))}
       </ul>
-       <div>
-             <button onClick={handleDownload}>Download PDF</button>
-          </div>
     </div>
   );
 }
+
 export default DocumentList;
 
 
