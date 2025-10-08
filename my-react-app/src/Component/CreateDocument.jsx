@@ -9,6 +9,14 @@ function CreateDocument({ onAdd }) {
    const [sections, setSections] = useState([{ title: "", content: "" }]);
  
    
+
+
+   function deleteSection(index){
+    const updated=sections.filter((_,i)=>i!==index);
+    setSections(updated);
+
+
+   }
    function addSection() {
      setSections((prev) => [...prev, { title: "", content: "" }]);
    }
@@ -16,14 +24,14 @@ function CreateDocument({ onAdd }) {
    
    function handleTitleChange(index, e) {
      const updated = [...sections];
-     updated[index].title = {...updated[index],title:e.target.value};
+     updated[index].title =e.target.value;
      setSections(updated);
    }
  
   
    function handleContentChange(index, e) {
      const updated = [...sections];
-     updated[index].content ={...updated[index] ,content:e.target.value};
+     updated[index].content =e.target.value;
      setSections(updated);
    }
  
@@ -74,6 +82,8 @@ function CreateDocument({ onAdd }) {
              value={s.content}
              onChange={(e) => handleContentChange(index, e)}
            />
+
+           <button type="button" onClick={()=>deleteSection(index)}>Delete Section</button>
            <hr />
          </div>
        ))}
