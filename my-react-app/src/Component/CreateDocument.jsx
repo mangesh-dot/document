@@ -38,7 +38,7 @@ function CreateDocument({ onAdd }) {
    
    async function handleSubmit(e) {
      e.preventDefault();
- 
+
    
        const res = await fetch("http://127.0.0.1:5000/api/doc", {
          method: "POST",
@@ -58,9 +58,7 @@ function CreateDocument({ onAdd }) {
      <form onSubmit={handleSubmit}>
        <h3>Create Document</h3>
  
-       <button type="button" onClick={addSection}>
-     Add
-       </button>
+
        <br />
        <br />
        
@@ -87,6 +85,10 @@ function CreateDocument({ onAdd }) {
            <hr />
          </div>
        ))}
+
+              <button type="button" onClick={addSection}>
+     Add
+       </button>
  
        
        <br />

@@ -39,6 +39,16 @@ def fetch_all_documents(app=None):
         rows = Document.query.order_by(Document.id.desc()).all()
     return [r.to_dict() for r in rows]
 
+def delete_document(id):
+
+    doc=Document.query.get(id)
+    if not doc:
+        return {"message":"Document not found"}
+    
+    db.session.delete(doc)
+    db.session.commit()
+    return {"message":"Document deleted"}
+
 
 def save_documents(entries):
    

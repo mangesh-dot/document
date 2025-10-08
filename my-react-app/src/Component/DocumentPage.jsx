@@ -4,34 +4,34 @@ import DocumentList from './DocumentList';
 
 function DocumentsPage() {
   const [docs, setDocs] = useState([]);
-  const [selectedDoc, setSelectedDoc] = useState(null); // track selected document
+  const [selectedDoc, setSelectedDoc] = useState(null);
 
   useEffect(() => {
     fetch('http://localhost:5000/api/doc')
       .then((r) => r.json())
-      .then((data) => setDocs(Array.isArray(data) ? data : []))
+      .then((data) => setDocs(data))
       .catch((err) => {
         console.error('Failed to fetch documents:', err);
         setDocs([]);
       });
   }, []);
 
-  function handleSelect(doc) {
-    setSelectedDoc(doc); // update selected document
-    console.log('Selected document:', doc);
-  }
+  // function handleSelect(doc) {
+  //   setSelectedDoc(doc);
+  //   console.log('Selected document:', doc);
+  // }
 
   const handleDownload = async () => {
-    if (!selectedDoc) {
-      alert("Please select a document first!");
-      return;
-    }
+    // if (!selectedDoc) {
+    //   alert("Please select a document first!");
+    //   return;
+    // }
 
     try {
       const res = await fetch("http://localhost:5000/generate_pdf", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ entries: [selectedDoc] }), // send only selected document
+        body: JSON.stringify({ entries: docs }), // send only selected document
       });
 
       const blob = await res.blob();
@@ -39,7 +39,7 @@ function DocumentsPage() {
 
       const link = document.createElement("a");
       link.href = url;
-      link.download = `${selectedDoc.title || "document"}.pdf`;
+      link.download = "document".pdf;
       link.click();
     } catch (err) {
       console.error(err);
@@ -50,11 +50,11 @@ function DocumentsPage() {
   return (
     <div>
       <h2>Documents Page</h2>
-      <button onClick={handleDownload} disabled={!selectedDoc}>
+      <button onClick={handleDownload}>
         Download Selected Document as PDF
       </button>
       <br />
-      <DocumentList documents={docs} onSelect={handleSelect} />
+      <DocumentList documents={docs}  />
     </div>
   );
 }

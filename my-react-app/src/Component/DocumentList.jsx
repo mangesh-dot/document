@@ -1,9 +1,7 @@
 import React from "react";
 import "../styles/DocumentList.css";
 
- 
-
-function DocumentList({ documents = [], onSelect }) {
+ function DocumentList({ documents = [], onDelete }) {
   if (!documents || documents.length === 0) {
     return <div>No documents yet.</div>;
   }
@@ -33,6 +31,9 @@ function DocumentList({ documents = [], onSelect }) {
             <div className="document-buttons">
               <button onClick={() => onSelect && onSelect(doc)}>Review</button>
             </div>
+            <div>
+              <button type="button" onClick={()=>onDelete(doc.id)}>Delete</button>
+              </div>
           </li>
         ))}
       </ul>

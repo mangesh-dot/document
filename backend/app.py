@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify
-from db import init_db, fetch_all_documents, save_documents
+from db import init_db, fetch_all_documents, save_documents,delete_document
 from pdf import generate_pdf
 from flask_cors import CORS
 app = Flask(__name__)
@@ -34,6 +34,12 @@ def api_add_doc():
 def get_docs():
     docs = fetch_all_documents()  
     return jsonify(docs) 
+
+
+@app.route("/api/doc/<int:id>" , methods=["DELETE"])
+def api_delete_section(id):
+    result=delete_document(id)
+    return jsonify(result);
 
 
 
