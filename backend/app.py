@@ -1,9 +1,9 @@
-from flask import Flask, request, jsonify
-from db import init_db, fetch_all_documents, save_documents,delete_document
+from flask import Flask, request, jsonify,json
+from db import init_db, fetch_all_documents, save_documents,delete_document,fetch_doc_id,delete_entries
 from pdf import generate_pdf
 from flask_cors import CORS
 app = Flask(__name__)
-CORS(app, origins="http://localhost:5174")
+CORS(app, origins="http://localhost:5173")
 
 
 init_db(app)
@@ -17,11 +17,14 @@ def home():
 
 @app.route('/api/doc', methods=['POST'])
 def api_add_doc():
-    data = request.get_json()
+    data = request.get_json() #converting json to python list
+
     entries = data.get('entries', [])
     if not entries:
         return jsonify({'error': 'No entries provided'})
 
+
+    
     saved_docs = save_documents(entries)
     return jsonify({ 'docs': saved_docs})
 
@@ -39,7 +42,12 @@ def get_docs():
 @app.route("/api/doc/<int:id>" , methods=["DELETE"])
 def api_delete_section(id):
     result=delete_document(id)
-    return jsonify(result);
+    return jsonify(result)
+
+@app.route("/api/doc/<int:id>/<int:i>",methods=["DELETE"])
+def api_delete_entries(id,i):
+    result=delete_entries(id,i)
+    return jsonify(result)
 
 
 
@@ -47,6 +55,12 @@ def api_delete_section(id):
 def generate_pdf_route():
     
     return generate_pdf()
+
+
+@app.route("/api/doc/<int:id>",methods=["GET"])
+def get_doc_id(id):
+    docs= fetch_doc_id(id)
+    return jsonify(docs)
     
 
 if __name__ == '__main__':

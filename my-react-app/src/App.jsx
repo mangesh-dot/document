@@ -5,9 +5,10 @@ import './App.css';
 
 import DocumentList from "./Component/DocumentList";
 import CreateDocument from "./Component/CreateDocument";
+import DocumentDetail from "./Component/DocumentDetail";
 
 import Home from "./Component/Home";
-import DocumentPage from "./Component/DocumentPage";
+
 
 function App() {
   const [documents, setDocuments] = useState([]);
@@ -18,6 +19,7 @@ async function fetchDocs() {
     const data = await res.json();
     
     setDocuments(data);
+
   } catch (err) {
     console.error('Failed to fetch docs:', err);
   }
@@ -52,20 +54,17 @@ async function DeleteSection(docId){
 
 }
 
-function handleAdd(doc) {
+function handleAdd(sections) {
+
   const newDoc = {
     id: Date.now(),
-    title: doc.title || "",   
-    content: doc.content || "" 
+    entries:sections,
   };
   setDocuments(prev => [...prev, newDoc]);
 }
 
 
-// function handleSelect(doc) {
-//   if (!doc) return;
-//   alert("Selected: " + (doc.title || "Untitled Document"));
-// }
+
 
 
  
@@ -76,7 +75,7 @@ function handleAdd(doc) {
         <Link to="/">Home</Link> |{" "}
         <Link to="/create">Create Document</Link> |{" "}
         <Link to="/list">Documents list</Link> |{" "}
-        <Link to="page">Document </Link>
+      
         <button onClick={fetchDocs} >+</button>
       </nav>
 
@@ -85,10 +84,11 @@ function handleAdd(doc) {
       <Route path="/" element={<Home />} />
       <Route
           path="/list"
-          element={<DocumentList documents={documents}  onDelete={DeleteSection} />}
+          element={<DocumentList documents={documents}  onDelete={DeleteSection}  />}
         />
       <Route path="/create" element={<CreateDocument onAdd={handleAdd}  />} />
-      <Route path="/page" element={<DocumentPage />} />
+     
+      <Route path="/documents/:id" element={<DocumentDetail />} />
     </Routes>
     </BrowserRouter>
   );
