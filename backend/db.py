@@ -89,16 +89,23 @@ def delete_entries(id,index):
 
 
 
-def save_documents(entries):
-   
-    saved_docs = []
-    doc=Document(entries=json.dumps(entries))
-    
-   
-    db.session.add(doc)
+def save_documents(entries,doc_id=None):
 
-    db.session.commit()
-    saved_docs.append(doc)
-    return [d.to_dict() for d in saved_docs]
+    if(doc_id):
+        doc=Document.query.get(doc_id)
+        doc.entries=json.dumps(entries)
+        db.session.commit()
+        return doc.to_dict()
+   
+    
+    
+    else:
+        saved_docs = []
+        doc=Document(entries=json.dumps(entries))
+        db.session.add(doc)
+
+        db.session.commit()
+        saved_docs.append(doc)
+        return [d.to_dict() for d in saved_docs]
 
 

@@ -3,15 +3,20 @@ import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import './App.css';
 
 
-import DocumentList from "./Component/DocumentList";
-import CreateDocument from "./Component/CreateDocument";
-import DocumentDetail from "./Component/DocumentDetail";
+
+
+import DocumentList  from "./component/DocumentList";
+import CreateDocument from "./component/CreateDocument";
+
+
 
 import Home from "./Component/Home";
+import ReviewDocument from "./Component/ReviewDocument";
 
 
 function App() {
   const [documents, setDocuments] = useState([]);
+  
 
 async function fetchDocs() {
   try {
@@ -67,6 +72,8 @@ function handleAdd(sections) {
 
 
 
+
+
  
 
   return (
@@ -74,9 +81,10 @@ function handleAdd(sections) {
       <nav>
         <Link to="/">Home</Link> |{" "}
         <Link to="/create">Create Document</Link> |{" "}
-        <Link to="/list">Documents list</Link> |{" "}
+        <Link to="/list">Documents list</Link> 
+        
       
-        <button onClick={fetchDocs} >+</button>
+        <button onClick={fetchDocs} >refresh</button>
       </nav>
 
 
@@ -84,11 +92,15 @@ function handleAdd(sections) {
       <Route path="/" element={<Home />} />
       <Route
           path="/list"
-          element={<DocumentList documents={documents}  onDelete={DeleteSection}  />}
+          element={<DocumentList documents={documents}  onDelete={DeleteSection}   />}
         />
       <Route path="/create" element={<CreateDocument onAdd={handleAdd}  />} />
+
+      <Route path="/create/:id" element={<CreateDocument onAdd={handleAdd}/> }/>
      
-      <Route path="/documents/:id" element={<DocumentDetail />} />
+      
+
+      <Route path="/review/:id" element={<ReviewDocument />}/>
     </Routes>
     </BrowserRouter>
   );

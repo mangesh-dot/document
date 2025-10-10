@@ -2,132 +2,53 @@ nav {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #1e293b; /* dark slate blue-gray */
-  padding: 12px 20px;
+  background-color: #f8fafc; /* light neutral background */
+  padding: 12px 24px;
   border-radius: 12px;
-  gap: 24px; /* spacing between links */
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  gap: 32px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  margin-bottom: 24px;
 }
 
+/* Links */
 nav a {
-  color: #f1f5f9; /* soft white */
+  color: #1e293b; /* deep gray-blue text */
   text-decoration: none;
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   font-weight: 500;
-  transition: all 0.2s ease-in-out;
   padding: 6px 12px;
-  border-radius: 8px;
+  border-radius: 6px;
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
 }
 
 nav a:hover {
-  background-color: #334155; /* slightly lighter shade */
-  color: #38bdf8; /* light blue accent */
+  background-color: #e2e8f0; /* subtle hover */
+  color: #0f172a;
   transform: translateY(-2px);
 }
 
-nav a.active {
-  background-color: #0ea5e9; /* highlight active link */
-  color: #fff;
-}
-
-/* App.css */
-
-nav {
-  background-color: #282c34;
-  color: white;
-  padding: 12px 20px;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 15px;
-  font-size: 16px;
-}
-
-nav a {
-  color: #61dafb;
-  text-decoration: none;
-  font-weight: 500;
-}
-
-nav a:hover {
-  text-decoration: underline;
-}
-
+/* Button */
 nav button {
   margin-left: auto;
-  background-color: #61dafb;
-  color: #282c34;
+  background-color: #1e293b; /* dark neutral */
+  color: #f8fafc;
   border: none;
-  padding: 6px 12px;
-  border-radius: 5px;
+  padding: 8px 16px;
+  border-radius: 8px;
   cursor: pointer;
-  font-weight: bold;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
 nav button:hover {
-  background-color: #21a1f1;
+  background-color: #334155; /* slightly lighter hover */
+  transform: translateY(-2px);
 }
 
-h3 {
-  text-align: center;
-  color: #333;
-}
-
-form {
-  max-width: 600px;
-  margin: 20px auto;
-  background: #f9f9f9;
-  padding: 25px;
-  border-radius: 10px;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
-}
-
-label {
-  font-weight: 600;
-  color: #555;
-}
-
-input[type="text"],
-textarea {
-  width: 100%;
-  padding: 8px 10px;
-  margin-top: 5px;
-  margin-bottom: 15px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 15px;
-}
-
-textarea {
-  height: 100px;
-  resize: vertical;
-}
-
-button {
-  background-color: #4caf50;
-  color: white;
-  border: none;
-  padding: 8px 14px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: bold;
-}
-
-button:hover {
-  background-color: #45a049;
-}
-
-button[type="button"] {
-  background-color: #f44336;
-}
-
-button[type="button"]:hover {
-  background-color: #e53935;
-}
-
-hr {
-  border: 0;
-  height: 1px;
-  background: #ddd;
-  margin: 15px 0;
+/* Optional: subtle link focus for accessibility */
+nav a:focus,
+nav button:focus {
+  outline: 2px solid #cbd5e1;
+  outline-offset: 3px;
 }

@@ -1,85 +1,85 @@
-/* ---------- Document List Styles ---------- */
 .document-list {
-  margin-top: 15px;
+  margin-top: 20px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 20px;
 }
 
-/* Empty state */
-.no-documents {
-  text-align: center;
-  color: #777;
-  font-size: 15px;
-  padding: 30px;
-  background: #fafafa;
-  border-radius: 10px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-}
 
-/* ---------- Each Document Card ---------- */
+
+
+
 .document-card {
-  background: #fdfdfd;
-  border-radius: 12px;
-  padding: 18px 20px;
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 28px;
   list-style: none;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-  transition: all 0.3s ease;
-}
-
-.document-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-}
-
-/* ---------- Document Entry ---------- */
-.document-entry {
+  border: 1px solid #f0f0f0;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(10px);
   margin-bottom: 10px;
 }
 
+.document-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  border-color: #e5e5e5;
+}
+
+/* Text */
+.document-entry {
+  margin-bottom: 12px;
+}
+
 .document-entry strong {
-  font-size: 16px;
-  color: #333;
+  font-size: 17px;
+  color: #1f2937;
+  font-weight: 600;
+  letter-spacing: -0.01em;
 }
 
 .document-entry div {
-  color: #555;
-  margin-top: 4px;
+  color: #6b7280;
+  margin-top: 6px;
+  line-height: 1.5;
 }
 
-/* ---------- Actions ---------- */
+/* Actions */
 .document-actions {
   display: flex;
-  gap: 10px;
-  margin-top: 12px;
+  gap: 12px;
+  margin-top: 16px;
 }
 
 .review-btn,
 .delete-btn {
-  padding: 8px 14px;
+  padding: 10px 20px;
   font-size: 14px;
-  border-radius: 6px;
-  border: none;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
   cursor: pointer;
-  transition: 0.25s;
+  background: #ffffff;
+  color: #374151;
+  transition: all 0.25s ease;
+  font-weight: 500;
+  letter-spacing: -0.01em;
 }
 
-/* Review Button */
-.review-btn {
-  background: linear-gradient(90deg, #007bff, #0056d1);
-  color: white;
+.review-btn:hover,
+.delete-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .review-btn:hover {
-  background: linear-gradient(90deg, #0056d1, #003f9e);
-}
-
-/* Delete Button */
-.delete-btn {
-  background: #ff4b4b;
-  color: #fff;
+  background: #f8fafc;
+  border-color: #d1d5db;
+  color: #1e40af;
 }
 
 .delete-btn:hover {
-  background: #d93636;
+  background: #fef2f2;
+  border-color: #fecaca;
+  color: #dc2626;
 }

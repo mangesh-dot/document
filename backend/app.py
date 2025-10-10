@@ -61,6 +61,15 @@ def generate_pdf_route():
 def get_doc_id(id):
     docs= fetch_doc_id(id)
     return jsonify(docs)
+
+@app.route("/api/doc/<int:id>" ,methods=["PUT"])
+def update_doc(id):
+    data = request.get_json()
+    entries = data.get("entries", [])
+    result = save_documents(entries,id)
+    return jsonify(result)
+
+
     
 
 if __name__ == '__main__':

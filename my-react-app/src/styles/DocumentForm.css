@@ -1,24 +1,21 @@
-/* ---------- Form Container ---------- */
 .document-form-container {
   max-width: 800px;
   margin: 40px auto;
   background: #ffffff;
   padding: 30px;
-  border-radius: 16px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   font-family: "Inter", sans-serif;
 }
 
-/* ---------- Form Header ---------- */
 .document-form h3 {
   text-align: center;
   margin-bottom: 25px;
-  color: #222;
-  font-size: 24px;
+  color: #333;
+  font-size: 22px;
   font-weight: 600;
 }
 
-/* ---------- Each Section ---------- */
 .document-section {
   margin-bottom: 20px;
 }
@@ -26,8 +23,8 @@
 .document-section label {
   display: block;
   font-weight: 500;
-  margin-bottom: 6px;
-  color: #333;
+  margin-bottom: 8px;
+  color: #555;
 }
 
 .document-section input,
@@ -35,42 +32,27 @@
   width: 100%;
   padding: 10px 12px;
   border: 1px solid #ccc;
-  border-radius: 8px;
+  border-radius: 6px;
   font-size: 15px;
   color: #333;
-  background: #fafafa;
+  background: #f9f9f9;
   outline: none;
-  transition: border 0.2s ease;
+  transition: border 0.2s ease, background 0.2s ease;
+  margin-bottom: 10px;
 }
 
 .document-section input:focus,
 .document-section textarea:focus {
-  border: 1px solid #007bff;
+  border: 1px solid #888;
   background: #fff;
 }
 
-/* ---------- Section Actions ---------- */
 .section-actions {
   display: flex;
   justify-content: flex-end;
   margin-top: 8px;
 }
 
-.delete-btn {
-  background: #ff4b4b;
-  color: #fff;
-  border: none;
-  padding: 8px 12px;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.delete-btn:hover {
-  background: #d93636;
-}
-
-/* ---------- Bottom Buttons ---------- */
 .form-actions {
   display: flex;
   justify-content: space-between;
@@ -81,33 +63,22 @@
 .add-btn,
 .save-btn {
   padding: 10px 16px;
-  border: none;
-  border-radius: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
   font-size: 15px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
   font-weight: 500;
+  background: #f5f5f5;
+  color: #333;
 }
 
-.add-btn {
-  background: linear-gradient(90deg, #28a745, #1c7d33);
-  color: white;
-}
-
-.add-btn:hover {
-  background: linear-gradient(90deg, #1c7d33, #145e26);
-}
-
-.save-btn {
-  background: linear-gradient(90deg, #007bff, #0056d1);
-  color: white;
-}
-
+.add-btn:hover,
 .save-btn:hover {
-  background: linear-gradient(90deg, #0056d1, #003f9e);
+  background: #eaeaea;
+  border-color: #bbb;
 }
 
-/* ---------- Divider ---------- */
 hr {
   border: none;
   height: 1px;

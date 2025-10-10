@@ -13,7 +13,8 @@ function DocumentList({ documents = [], onDelete }) {
       <ul>
         {documents.map((doc) => (
           <li key={doc.id} className="document-card"
-            onClick={() => navigate(`/documents/${doc.id}`)}>
+            // onClick={() => navigate(`/create/${doc.id}`)}
+            >
             {doc.entries && doc.entries.length > 0 ? (
               <div>
                 {(doc.entries).map((e, i) => (
@@ -33,14 +34,15 @@ function DocumentList({ documents = [], onDelete }) {
             <div className="document-actions">
               <button
                 className="review-btn"
-                onClick={() => navigate(`/documents/${doc.id}` )}
+                onClick={() => navigate(`/review/${doc.id}`)}
+
               >
                 Review
               </button>
               <button
                 className="delete-btn"
                 type="button"
-                onClick={() => onDelete && onDelete(doc.id)}
+                onClick={() => onDelete(doc.id)}
               >
                 Delete
               </button>
