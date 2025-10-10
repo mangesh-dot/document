@@ -9,12 +9,16 @@ db = SQLAlchemy()
 def init_db(app):
   
     
-    db_uri = 'mysql+pymysql://root:password@localhost/react_db'
-    app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
-    app.config.setdefault('SQLALCHEMY_TRACK_MODIFICATIONS', False)
+    DATABASE_URL = os.environ.get("DATABASE_URL")  # we’ll set this on Render
+
+    app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE_URL
+    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     db.init_app(app)
     with app.app_context():
         db.create_all()
+
+
+
 
 
 class Document(db.Model):
