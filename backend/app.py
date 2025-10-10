@@ -3,7 +3,7 @@ from db import init_db, fetch_all_documents, save_documents,delete_document,fetc
 from pdf import generate_pdf
 from flask_cors import CORS
 app = Flask(__name__)
-CORS(app, origins="http://localhost:5173")
+CORS(app)
 
 
 init_db(app)
