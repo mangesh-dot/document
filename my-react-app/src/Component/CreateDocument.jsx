@@ -3,6 +3,9 @@ import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import "../styles/DocumentForm.css";
 
+
+const API_URL = import.meta.env.VITE_API_URL;
+
 function CreateDocument({ onAdd }) {
   const [sections, setSections] = useState([{ title: "", content: "" }]);
   const{id}=useParams()
@@ -46,8 +49,8 @@ function CreateDocument({ onAdd }) {
 
     const method = isEdit ? "PUT" : "POST";
     const url = isEdit
-      ? `http://127.0.0.1:5000/api/doc/${id}`
-      : "http://127.0.0.1:5000/api/doc";
+      ? `${API_URL}/api/doc/${id}`
+      : `${API_URL}/api/doc`;
 
     try {
       const res = await fetch(url, {

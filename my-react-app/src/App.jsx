@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import './App.css';
 
+const API_URL = import.meta.env.VITE_API_URL;
 
 
 
@@ -20,7 +21,7 @@ function App() {
 
 async function fetchDocs() {
   try {
-    const res = await fetch('http://127.0.0.1:5000/api/doc');
+    const res = await fetch(`${API_URL}/api/doc`);
     const data = await res.json();
     
     setDocuments(data);
@@ -39,7 +40,7 @@ async function fetchDocs() {
 
 async function DeleteSection(docId){
   try{
-    const res= await fetch(`http://localhost:5000/api/doc/${docId}` ,{
+    const res= await fetch(`${API_URL}/api/doc/${docId}` ,{
       method:"DELETE",
 
       

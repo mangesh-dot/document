@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 import "../styles/ReviewDocument.css";
 
-
+const API_URL = import.meta.env.VITE_API_URL;
 function ReviewDocument() {
   const { id } = useParams();
   const [doc, setDoc] = useState(null);
@@ -36,7 +36,7 @@ function ReviewDocument() {
 
   const handleDownload = async () => {
     try {
-      const res = await fetch("http://localhost:5000/generate_pdf", {
+      const res = await fetch(`${API_URL}/generate_pdf`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ entries: doc.entries }),
@@ -61,7 +61,7 @@ function ReviewDocument() {
 
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/doc/${id}`)
+    fetch(`${API_URL}/api/doc/${id}`)
       .then((r) => r.json())
       .then((data) => setDoc(data))
       .catch((err) => console.error("Failed to fetch document:", err));
