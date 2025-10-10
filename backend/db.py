@@ -9,7 +9,7 @@ db = SQLAlchemy()
 def init_db(app):
   
     
-    DATABASE_URL = os.environ.get("DATABASE_URL")  # we’ll set this on Render
+    DATABASE_URL = os.environ.get("DATABASE_URL") 
 
     app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE_URL
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -29,7 +29,7 @@ class Document(db.Model):
         try:
             entries = json.loads(self.entries) if self.entries else []
             
-            # If entries is empty or invalid JSON, fallback to empty list
+            
             return {
                 'id': self.id,
                 'entries': entries,

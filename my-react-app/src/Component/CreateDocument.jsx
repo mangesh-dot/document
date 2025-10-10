@@ -51,7 +51,7 @@ function CreateDocument({ onAdd }) {
 
     try {
       const res = await fetch(url, {
-        method, // ✅ fixed
+        method, 
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ entries: sections }),
       });
@@ -63,7 +63,7 @@ function CreateDocument({ onAdd }) {
       alert(isEdit ? "Document updated" : "Document created");
 
       setSections([{ title: "", content: "" }]);
-      navigate("/list"); // ✅ go back after saving
+      navigate("/list"); 
     } catch (err) {
       console.error(err);
       alert(isEdit ? "Error updating document" : "Error creating document");

@@ -5,8 +5,8 @@ import './App.css';
 
 
 
-import DocumentList  from "./component/DocumentList";
-import CreateDocument from "./component/CreateDocument";
+import DocumentList  from "./Component/DocumentList";
+import CreateDocument from "./Component/CreateDocument";
 
 
 
