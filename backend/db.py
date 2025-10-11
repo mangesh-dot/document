@@ -55,8 +55,13 @@ def fetch_all_documents(app=None):
     return result
 
 def fetch_doc_id(id):
-    doc=Document.query.get(id)
-    return doc.to_dict()
+    try:
+        doc = Document.query.get(id)
+        if not doc:
+            return jsonify({"error": "Document not found"}), 404
+        return jsonify(doc.to_dict())
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
 
 
 
