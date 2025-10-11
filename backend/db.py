@@ -56,16 +56,19 @@ def fetch_all_documents(app=None):
     return result
 
 def fetch_doc_id(id):
+    doc = Document.query.get(id)
+    if not doc:
+        return {"error": "Document not found"}
+
     try:
-        doc = Document.query.get(id)
-        if not doc:
-            return jsonify({"error": "Document not found"}), 404
-        return jsonify(doc.to_dict())
-    except Exception as e:
-        return jsonify({"error": str(e)}), 500
+        entries = json.loads(doc.entries) if doc.entries else []
+    except json.JSONDecodeError:
+        entries = []
 
-
-
+    return {
+        "id": doc.id,
+        "entries": entries
+    }
 def delete_document(id):
 
     doc=Document.query.get(id)
