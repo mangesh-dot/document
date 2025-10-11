@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 import "../styles/ReviewDocument.css";
 
-const API_URL = import.meta.env.VITE_API_URL;
+const API_URL = "https://documentmanagement-rm25.onrender.com";
 function ReviewDocument() {
   const { id } = useParams();
   const [doc, setDoc] = useState(null);

@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import "../styles/DocumentForm.css";
 
 
-const API_URL = import.meta.env.VITE_API_URL;
+const API_URL = "https://documentmanagement-rm25.onrender.com";
 
 function CreateDocument({ onAdd }) {
   const [sections, setSections] = useState([{ title: "", content: "" }]);
@@ -35,7 +35,7 @@ function CreateDocument({ onAdd }) {
 
   useEffect(() => {
     if (isEdit) {
-      fetch(`http://127.0.0.1:5000/api/doc/${id}`)
+      fetch(`${API_URL}/api/doc/${id}`)
         .then((res) => res.json())
         .then((data) => {
           setSections(data.entries || [{ title: "", content: "" }]);
