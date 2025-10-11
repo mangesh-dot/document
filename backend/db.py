@@ -1,5 +1,6 @@
 from flask_sqlalchemy import SQLAlchemy
-import json,jsonify
+import json
+from flask import jsonify
 import os
 
 

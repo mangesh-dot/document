@@ -1,4 +1,5 @@
-from flask import Flask, request, jsonify,json
+from flask import Flask, request, jsonify
+import json
 from db import init_db, fetch_all_documents, save_documents,delete_document,fetch_doc_id,delete_entries
 from pdf import generate_pdf
 from flask_cors import CORS
